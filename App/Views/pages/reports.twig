@@ -1,0 +1,44 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    <div class="reports">
+        <div class="reports-grid">
+            {% if reports %}
+                {% for report in reports %}
+                    <div class="report-element">
+                        <div class="report">
+                            <h2 class="report-title">{{ report.title }}</h2>
+                            <p class="report-date moment-date">{{ report.created_at }}</p>
+
+                            <div class="report-actions">
+                                <a href="{{ url('uploads/' ~ report.file) }}">
+                                    <i class="fa fa-download" aria-hidden="true"></i> Download
+                                </a>
+
+                                <a href="{{ url('reports/' ~ report.id ~ '/delete') }}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No reports to show. Click "Add report" button to create a new one.</p>
+            {% endif %}
+        </div>
+
+        <div class="main-action main-action-success">
+            <a href="{{ url('reports/add') }}" title="Add report"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('reports') }}" title="Reports">Reports</a>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/moment_dates.min.js') }}"></script>
+{% endblock %}

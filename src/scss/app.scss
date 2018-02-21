@@ -1,0 +1,34 @@
+/*
+Application name:
+Description:
+Version: 1.0
+*/
+
+@charset 'UTF-8';
+
+// Tools
+@import 'tools/variables';
+@import 'tools/utility-classes';
+
+// Vendors
+@import 'vendor/responsive';
+
+// Base
+@import 'base/normalize';
+@import 'base/base';
+
+// Components
+@import 'components/form';
+@import 'components/buttons';
+@import 'components/card';
+@import 'components/products';
+@import 'components/single-product';
+@import 'components/categories';
+@import 'components/users';
+@import 'components/reports';
+@import 'components/dashboard';
+@import 'components/errors';
+
+// Layout
+@import 'layout/sidebar';
+@import 'layout/main';

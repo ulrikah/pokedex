@@ -1,0 +1,43 @@
+environment: 'dev'
+
+dev:
+    name: 'Pokedex'
+    description: 'Just a simple inventory manager'
+    url: 'http://localhost:80/'
+    database:
+        username: 'root'
+        password: ''
+        name: 'inventory'
+        host: 'localhost'
+        type: 'mysql'
+    debug: true
+    twig:
+        cache: false
+    salt: 'test'
+    mail:
+        from: 'root@root.com'
+        host: 'localhost'
+        username: null
+        password: null
+        port: 1025
+
+prod:
+    name: 'Pokedex'
+    description: 'Just a simple inventory manager'
+    url: 'http://localhost:80/'
+    database:
+        username: 'root'
+        password: ''
+        name: 'inventory'
+        host: 'localhost'
+        type: 'mysql'
+    debug: false
+    twig:
+        cache: false
+    salt: 'test'
+    mail:
+        from: 'root@root.com'
+        host: 'localhost'
+        username: null
+        password: null
+        port: 1025

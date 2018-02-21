@@ -1,0 +1,91 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    <div class="col-md-12 products">
+        <div class="products-actions">
+            <div class="products-actions-left">
+                <span class="products-actions-count">{{ count }} item(s)</span>
+            </div>
+
+            <div class="products-actions-view">
+
+                <div class="products-actions-template">
+                    <a href="#" class="products-actions-template-option products-actions-template-option-list products-actions-template-option-active"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+                    <a href="#" class="products-actions-template-option products-actions-template-option-grid"><i class="fa fa-th" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            {% if products %}
+                {% for product in products %}
+                    <div class="product-element">
+                        <div class="product">
+                            <div class="product-id">
+                                <span>{{ pad(product.id) }}</span>
+                            </div>
+
+                            <div class="product-image">
+                                <img src="{{ url('uploads/' ~ product.media) }}" alt="{{ product.title }}">
+                            </div>
+
+                            <div class="product-title">
+                                <span>{{ product.title }}</span>
+                            </div>
+
+                            <div class="product-category">
+                                <span>{{ product.category }}</span>
+                            </div>
+
+                            <div class="product-price">
+                                <span>Price: </span>
+                                <span>${{ product.price }}</span>
+                            </div>
+
+                            <div class="product-quantity">
+                                <span>Quantity:</span>
+                                <span>{{ product.quantity }}</span>
+                            </div>
+
+                            <div class="product-actions">
+                            	{% if admin %}
+                            	<div class="product-actions-view">
+                                    <a href="{{ url('products/view/' ~ product.id) }}">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                {% endif %}
+                                <div class="product-actions-delete">
+                                    <a href="{{ url('products/' ~ product.id ~ '/delete') }}">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+
+                                <div class="product-actions-edit">
+                                    <a href="{{ url('products/' ~ product.id ~ '/edit') }}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No products to show. Click "Add product" button to create a new one.</p>
+            {% endif %}
+        </div>
+
+        <div class="main-action main-action-success">
+            <a href="{{ url('products/add') }}" title="Add product"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('products') }}" title="Products">Products</a>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ asset('js/products.min.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,75 @@
+.important-facts {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 15px;
+
+    .card {
+        height: 100%;
+        text-align: center;
+
+        span {
+            color: $black;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1em;
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.top-facts, .other-facts {
+    display: flex;
+    margin-bottom: 30px;
+
+    .card {
+        height: 100%;
+        padding: 30px;
+
+        h3 {
+            font-size: 1.05em;
+            margin-bottom: 20px;
+            color: $black;
+        }
+
+        table {
+            width: 100%;
+
+            thead td {
+                padding-bottom: 14px;
+                font-weight: 600;
+            }
+
+            tbody {
+                tr:nth-child(odd) {
+                    background-color: $grey;
+                }
+
+                tr {
+                    border: 1px solid $light-grey;
+                }
+
+
+            }
+
+            tr td:first-child {
+                padding-left: 10px;
+            }
+
+            td {
+                padding: 10px 0px 10px 0px;
+
+                a {
+                    color: $black-2;
+
+                    &:hover {
+                        color: $main-color;
+                    }
+                }
+            }
+        }
+    }
+}

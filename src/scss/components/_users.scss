@@ -1,0 +1,57 @@
+.users-grid {
+
+}
+
+.user-element {
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
+.user {
+    display: block;
+    position: relative;
+    color: $black-2;
+    border: 1px solid $light-grey;
+    border-radius: $border-radius;
+    background-color: $white;
+    padding: 30px;
+    width: 100%;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+}
+
+.user-username {
+    margin-bottom: 2px;
+}
+
+.user-email {
+    margin-bottom: 14px;
+}
+
+.user-actions {
+    display: inline-block;
+    position: absolute;
+    width: auto;
+    top: 24px;
+    right: 24px;
+
+    div {
+        display: inline-block;
+        padding: 0px 2px;
+
+        a {
+            color: $black-2;
+
+            &:hover {
+                color: $main-color;
+            }
+        }
+
+        &:last-child {
+            padding-right: 0px;
+        }
+    }
+}

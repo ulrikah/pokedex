@@ -1,0 +1,88 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    {% if errors %}
+        <div class="col-md-12">
+            <div class="errors">
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="single-product">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="form-control">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" placeholder="Your title" id="title" class="{{ errors.title ? 'errors-border' : '' }}" value="{{ data.title ? data.title : '' }}">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-control">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" rows="8" cols="80" class="{{ errors.description ? 'errors-border' : '' }}">{{ data.description ? data.description : '' }}</textarea>
+                    </div>
+                </div>
+
+                {% if revisions %}
+                <div class="card">
+                    <h3>Latest revisions</h3>
+                    <ul>
+                        {% for revision in revisions %}
+                            <li>Modified by {{ revision.user }} <span class="moment-date">{{ revision.date }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="form-control">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" class="{{ errors.category ? 'errors-border' : '' }}">
+                            {% for category in categories %}
+                                {% if category.id == data.category %}
+                                    <option value="{{ category.id }}" selected>{{ category.title }}</option>
+                                {% else %}
+                                    <option value="{{ category.id }}">{{ category.title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-control">
+                        <label for="price">Price ($)</label>
+                        <input type="number" name="price" placeholder="1299" id="price" class="{{ errors.price ? 'errors-border' : '' }}" value="{{ data.price ? data.price : '' }}">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-control">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" name="quantity" placeholder="32" id="quantity" class="{{ errors.quantity ? 'errors-border' : '' }}" value="{{ data.quantity ? data.quantity : '' }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-action main-action-success">
+                <button type="submit" name="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('products') }}" title="Products">Products</a>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/moment_dates.min.js') }}"></script>
+{% endblock %}

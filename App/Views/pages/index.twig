@@ -1,0 +1,13 @@
+{% extends 'layouts/blank.twig' %}
+
+{% block content %}
+
+    <div class="card centered-card">
+        <p>Sign in to the dashboard of your inventory management system by clicking the following link.</p>
+        <a href="{{ url('signin') }}" title="Sign in" class="button">Sign in</a>
+        <p><br><br></p>
+        <p>... or register a new user by clicking the following link.</p>
+        <a href="{{ url('registration') }}" title="Register" class="button">Register</a>
+    </div>
+
+{% endblock %}

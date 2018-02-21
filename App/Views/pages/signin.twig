@@ -1,0 +1,36 @@
+{% extends 'layouts/blank.twig' %}
+
+{% block content %}
+
+<div class="signin-form">
+    <form action="#" method="post" class="form">
+        <div class="form-title">
+            <h1>Sign in to your account</h1>
+        </div>
+
+        {% if errors %}
+        <div class="form-flash">
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-control">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Your username">
+        </div>
+
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Your password">
+        </div>
+
+        <div class="form-control">
+            <input type="submit" name="submit" value="Sign in">
+        </div>
+    </form>
+    <p>Don't have a user? Click <a href="registration">here</a> to register.</p>
+</div>
+
+{% endblock %}

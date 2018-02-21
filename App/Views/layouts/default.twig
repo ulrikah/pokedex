@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{{ title(title) }}</title>
+        <meta name="description" content="{{ description is defined ? description : '' }}">
+
+        <!-- Links -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.min.css') }}">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <a href="{{ url('dashboard') }}">
+                    <img src="{{ asset('img/logo.png') }}" alt="Pokedex Manager">
+                </a>
+            </div>
+
+            <div class="sidebar-nav">
+                <nav>
+                    <ul>
+                        <li><a class="{{ page == 'dashboard' ? 'active' : '' }}" href="{{ url('dashboard') }}" title="Dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+                        <li><a class="{{ page == 'products' ? 'active' : '' }}" href="{{ url('products') }}" title="Products"><i class="fa fa-tags" aria-hidden="true"></i> Products</a></li>
+                        <li><a class="{{ page == 'categories' ? 'active' : '' }}" href="{{ url('categories') }}" title="Categories"><i class="fa fa-anchor" aria-hidden="true"></i> Categories</a></li>
+                        {% if admin %}
+                        <li><a class="{{ page == 'users' ? 'active' : '' }}" href="{{ url('admin/users') }}" title="Users"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
+                        {% endif %}
+                        <li><a class="{{ page == 'reports' ? 'active' : '' }}" href="{{ url('reports') }}" title="Reports"><i class="fa fa-file-text" aria-hidden="true"></i> Reports</a></li>
+                        <li><a class="{{ page == 'about' ? 'active' : '' }}" href="{{ url('about') }}" title="About"><i class="fa fa-question" aria-hidden="true"></i> About us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="main-header">
+                <div class="main-header-infos">
+                    <h1 class="main-header-title">{{ title }}</h1>
+                    <span class="main-header-breadcrumb">{% block breadcrumb %}{% endblock %}</span>
+                </div>
+
+                <div class="main-header-session">
+                    <span class="main-header-session-user">Welcome {{ auth }}!</span>
+                    <a class="main-header-session-session" href="{{ url('signout') }}">Sign out</a>
+                </div>
+            </div>
+
+            <div class="main-content">
+
+            {% block content %}
+            {% endblock %}
+
+
+            </div>
+        </div>
+
+        <script src="{{ asset('js/app.min.js') }}"></script>
+
+        {% block extra_scripts %}
+        {% endblock %}
+    </body>
+</html>

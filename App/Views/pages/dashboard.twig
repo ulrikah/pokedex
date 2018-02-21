@@ -1,0 +1,163 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    <div class="important-facts">
+        <div class="col-md-3">
+            <div class="card">
+                <span class="references-count">{{ stats.value }}</span>
+                <p>different references</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <span class="average-quantity">{{ stats.average_quantity }}</span>
+                <p>average quantity per reference</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <span class="products-count">{{ stats.count }}</span>
+                <p>products in stock</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <span class="average-price">{{ stats.average_price }}</span>
+                <p>average price</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-facts">
+        <div class="col-md-7">
+            <div class="card">
+                <h3>References to follow <span class="sub">(low quantities)</span></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Title</td>
+                            <td>Category</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for product in stats.lows_products %}
+                            <tr>
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.title }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.quantity }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <h3>References among categories</h3>
+                <canvas class="categories_stats"></canvas>
+            </div>
+        </div>
+    </div>
+
+    	<div class="other-facts">
+        <div class="col-md-5">
+            <div class="card">
+                <h3>Quantities among categories</h3>
+                <canvas class="quantities_stats"></canvas>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <h3>Latest reports</h3>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Title</td>
+                        <td>File</td>
+                        <td>Date</td>
+                        <td>Created by</td>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for report in stats.reports %}
+                        <tr>
+                            <td>{{ report.id }}</td>
+                            <td>{{ report.title }}</td>
+                            <td><a href="{{ url('uploads/' ~ report.file) }}" target="_blank" title="Download">Download</a></td>
+                            <td class="moment-date">{{ report.created_at }}</td>
+                            <td>{{ report.user }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col-md-12">
+        	<div class="card">
+        	<h3>Shoutbox for all users</h3>
+        	
+        		<div class="comment-form">
+					<form action="/comment/add" method="post" class="form">
+        			   <div class="form-control">
+            				<label for="username">Submit a comment to the shoutbox</label>
+            				<input type="text" name="comment" id="comment" placeholder="Your comment">
+        			   </div>
+        			   <div class="form-control">
+            				<input type="submit">
+       				   </div>
+   					</form>
+				</div>
+				
+                <div class="comments-grid">
+                    {% if comments %}
+                        {% for comment in comments %}
+                            <div class="comment-element">
+                                <div class="comment">
+                                
+                                    <div class="comment-created_at-user">
+                                        <span>{{ comment.created_at }}	&nbsp;	&nbsp;{{ comment.user }}</span>
+                                    </div>
+                                    
+                                    <div class="product-text">
+                                        <p>{{ comment.text | raw}}</p>
+                                    </div>
+                                    <br>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No comments in the shoutbox.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/moment_dates.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard.min.js') }}"></script>
+{% endblock %}

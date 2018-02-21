@@ -1,0 +1,24 @@
+.card {
+    background-color: $white;
+    border: 1px solid $light-grey;
+    border-radius: $border-radius;
+    padding: 20px;
+}
+
+.centered-card {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 40px;
+    max-width: 400px;
+    border: 1px solid #E6EAED;
+    border-radius: 3px;
+    font-size: 1em;
+
+    p {
+        margin-bottom: 30px;
+    }
+}

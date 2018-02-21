@@ -1,0 +1,57 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    {% if errors %}
+        <div class="col-md-12">
+            <div class="errors">
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="single-product">
+        <form action="#" method="post">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="form-control">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="Your username" id="username" class="{{ errors.username ? 'errors-border' : '' }}" value="{{ data.username ? data.username : '' }}">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" placeholder="Your email" id="email" class="{{ errors.email ? 'errors-border' : '' }}" value="{{ data.email ? data.email : '' }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Your password" id="password" class="{{ errors.password ? 'errors-border' : '' }}">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-control">
+                        <label for="password_verification">Repeat password</label>
+                        <input type="password" name="password_verification" placeholder="Repeat your password" id="password_verification" class="{{ errors.password ? 'errors-border' : '' }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-action main-action-success">
+                <button type="submit" name="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('admin/users') }}" title="Users">Users</a>
+{% endblock %}

@@ -1,0 +1,51 @@
+.reports-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.report-element {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.report {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: $black-2;
+    border: 1px solid $light-grey;
+    border-radius: $border-radius;
+    background-color: $white;
+    padding: 30px;
+    width: 100%;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+}
+
+.report-actions {
+    a:first-child {
+        margin-right: 16px;
+    }
+
+    a {
+        color: $black-2;
+
+        i {
+            margin-right: 2px;
+        }
+
+        &:hover {
+            color: $main-color;
+
+            &:last-child {
+                color: $danger-color;
+            }
+        }
+    }
+}

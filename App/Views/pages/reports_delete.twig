@@ -1,0 +1,25 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    <div class="delete-form">
+        <form action="#" method="POST">
+            <div class="form-control">
+                <p>Are you sure you want to delete the following report?</p>
+            </div>
+
+            <div class="form-control">
+                <div class="card">
+                    <h2>{{ data.title }}</h2>
+                </div>
+            </div>
+
+            <div class="main-action main-action-danger">
+                <button type="submit" name="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('reports') }}" title="Reports">Reports</a>
+{% endblock %}

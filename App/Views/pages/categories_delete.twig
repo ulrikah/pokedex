@@ -1,0 +1,65 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+    <div class="delete-form">
+        <form action="#" method="POST">
+            <div class="form-control">
+                <p>Are you sure you want to delete the following category?</p>
+            </div>
+<!-- RMBP!!! user: {{ username }} hash: {{passwordHash}}-->
+            <div class="form-control">
+                <div class="card">
+                    <h2>{{ data.title }}</h2>
+                    <p>{{ data.description }}</p>
+                </div>
+            </div>
+            
+            {% if products %}
+            <div class="form-control">
+                <p style="color:#FF0000">Deleting this category will also <b>delete</b> all the products in this category. List of products that will be <b>deleted:</b></p>
+            </div>
+            <div class="products-grid">
+                {% for product in products %}
+                    <div class="product-element">
+                        <div class="product">
+                            <div class="product-id">
+                                <span>{{ pad(product.id) }}</span>
+                            </div>
+
+                            <div class="product-image">
+                                <img src="{{ url('uploads/' ~ product.media) }}" alt="{{ product.title }}">
+                            </div>
+
+                            <div class="product-title">
+                                <span>{{ product.title }}</span>
+                            </div>
+
+                            <div class="product-category">
+                                <span>{{ product.category }}</span>
+                            </div>
+
+                            <div class="product-price">
+                                <span>Price: </span>
+                                <span>${{ product.price }}</span>
+                            </div>
+
+                            <div class="product-quantity">
+                                <span>Quantity:</span>
+                                <span>{{ product.quantity }}</span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="main-action main-action-danger">
+                <button type="submit" name="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a> > <a href="{{ url('categories') }}" title="Categories">Categories</a>
+{% endblock %}

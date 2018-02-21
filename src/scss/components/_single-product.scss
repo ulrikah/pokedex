@@ -1,0 +1,33 @@
+.single-product {
+
+    .card {
+        margin-bottom: 20px;
+
+        h3 {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+.single-product-submit {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    button {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: $success-color;
+        border: none;
+        color: $white;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: $transition;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $success-color-hover;
+        }
+    }
+}

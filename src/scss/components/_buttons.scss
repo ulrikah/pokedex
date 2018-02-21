@@ -1,0 +1,11 @@
+.button {
+    background-color: $main-color;
+    color: $white;
+    border-radius: $border-radius;
+    padding: 6px 18px;
+
+    &:hover {
+        background-color: $main-color-hover;
+        color: $white;
+    }
+}
