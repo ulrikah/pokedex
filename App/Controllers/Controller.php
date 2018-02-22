@@ -15,7 +15,6 @@ class Controller {
     protected $categoryRep;
     protected $productRep;
     
-    // constructor which this one is used by all *Controller objects
     public function __construct(){
         $this->auth = new Auth;
         $this->userRep = new UsersModel;

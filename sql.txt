@@ -1,0 +1,164 @@
+﻿SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `created_at` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+INSERT INTO `categories` (`id`, `title`, `description`, `created_at`, `user`) VALUES
+(1, 'Grass pokemons', 'Grass is one of the three basic elemental types along with Fire and Water, which constitute the three starter Pokemon. This creates a simple triangle to explain the type concept easily to new players. Grass is one of the weakest types statistically, with 5 defensive weaknesses and 7 types that are resistant to Grass moves. Furthermore, many Grass Pokemon have Poison as their secondary type, adding a Psychic vulnerability. The type combination with the most weaknesses is Grass/Psychic.', '2017-03-08 22:15:15', 'user1'),
+(2, 'Fire pokemons', 'Fire is one of the three basic elemental types along with Water and Grass, which constitute the three starter Pokemon. This creates a simple triangle to explain the type concept easily to new players. Fire types are notoriously rare in the early stages of the games so choosing the Fire variation starter is often a plus.', '2017-03-08 22:20:04', 'user1'),
+(3, 'Water pokemons', 'Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokemon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokemon, which are based on a wide variety of fish and other sea-dwelling creatures. As of Generation 6, Water has been paired with every other type.', '2017-03-08 22:24:27', 'user1'),
+(4, 'Bug pokemons', 'Most Bug Pokemon grow quickly and evolve sooner than other types. As a result, they are often very weak. In Generation I, bugs were almost useless since the few Bug type moves available were very weak. The situation improved in later games with better moves and an advantage against the Dark type.', '2017-03-08 22:28:30', 'user1'),
+(5, 'Normal pokemons', 'The Normal type is the most basic type of Pokemon. They are very common and appear from the very first route you visit. Most Normal Pokemon are single type, but there is a large contingent having a second type of Flying. Pokemon X/Y add several Normal dual-type Pokemon.', '2017-03-08 22:35:14', 'user1'),
+(6, 'Electric pokemons', 'There are relatively few Electric Pokemon; in fact only four were added in the third generation. Most are based on rodents or inanimate objects. Electric Pokemon are very good defensively, being weak only to Ground moves. Eelektross is the only Pokemon to have no type disadvantages due to its ability, Levitate.', '2017-03-08 22:40:32', 'user1');
+
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `created_at` varchar(255) DEFAULT NULL,
+  `category` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `media` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `products` (`id`, `title`, `description`, `created_at`, `category`, `price`, `quantity`, `media`, `user`) VALUES
+(1, 'Bulbasaur', 'Bulbasaur is a Grass/Poison type Pokemon introduced in Generation 1. It is known as the Seed Pokemon.\r\n', '2017-03-08 22:17:21', 1, 89, 26, '1489007841.jpg', 'user1'),
+(2, 'Ivysaur', 'Ivysaur is a Grass/Poison type Pokemon introduced in Generation 1. It is known as the Seed Pokemon.', '2017-03-08 22:18:16', 1, 87, 18, '1489007897.jpg', 'user1'),
+(3, 'Venusaur', 'Venusaur is a Grass/Poison type Pokemon introduced in Generation 1. It is known as the Seed Pokemon. Venusaur has a Mega Evolution, available from X & Y onwards.', '2017-03-08 22:19:11', 1, 1200, 12, '1489007951.jpg', 'user1'),
+(4, 'Charmander', 'Charmander is a Fire type Pokemon introduced in Generation 1. It is known as the Lizard Pokemon.', '2017-03-08 22:20:54', 2, 27, 165, '1489008054.jpg', 'user1'),
+(5, 'Charmeleon', 'Charmeleon is a Fire type Pokemon introduced in Generation 1. It is known as the Flame Pokemon.', '2017-03-08 22:21:43', 2, 125, 13, '1489008103.jpg', 'user1'),
+(6, 'Charizard', 'Charizard is a Fire/Flying type Pokemon introduced in Generation 1. It is known as the Flame Pokemon. Charizard has two Mega Evolutions, available from X & Y onwards.', '2017-03-08 22:22:29', 2, 1321, 27, '1489008149.jpg', 'user1'),
+(7, 'Squirtle', 'Squirtle is a Water type Pokemon introduced in Generation 1. It is known as the Tiny Turtle Pokemon.', '2017-03-08 22:25:12', 3, 34, 142, '1489008312.jpg', 'user1'),
+(8, 'Wartortle', 'Wartortle is a Water type Pokemon introduced in Generation 1. It is known as the Turtle Pokemon.', '2017-03-08 22:25:45', 3, 162, 10, '1489008346.jpg', 'user1'),
+(9, 'Blastoise', 'Blastoise is a Water type Pokemon introduced in Generation 1. It is known as the Shellfish Pokemon. Blastoise has a Mega Evolution, available from X & Y onwards.', '2017-03-08 22:27:31', 3, 1254, 19, '1489008452.jpg', 'user1'),
+(10, 'Caterpie', 'Caterpie is a Bug type Pokemon introduced in Generation 1. It is known as the Worm Pokemon.', '2017-03-08 22:29:07', 4, 12, 128, '1489008548.jpg', 'user1'),
+(11, 'Metapod', 'Metapod is a Bug type Pokemon introduced in Generation 1. It is known as the Cocoon Pokemon.', '2017-03-08 22:30:40', 4, 26, 14, '1489008640.jpg', 'user1'),
+(12, 'Butterfree', 'Butterfree is a Bug/Flying type Pokemon introduced in Generation 1. It is known as the Butterfly Pokemon.', '2017-03-08 22:32:32', 4, 27, 12, '1489008752.jpg', 'user1'),
+(13, 'Weedle', 'Weedle is a Bug/Poison type Pokemon introduced in Generation 1. It is known as the Hairy Bug Pokemon.', '2017-03-08 22:33:04', 1, 78, 129, '1489008784.jpg', 'user1'),
+(14, 'Kakuna', 'Kakuna is a Bug/Poison type Pokemon introduced in Generation 1. It is known as the Cocoon Pokemon.', '2017-03-08 22:33:40', 4, 182, 10, '1489008821.jpg', 'user1'),
+(15, 'Beedrill', 'Beedrill is a Bug/Poison type Pokemon introduced in Generation 1. It is known as the Poison Bee Pokemon. Beedrill has a Mega Evolution, available from Omega Ruby & Alpha Sapphire onwards.', '2017-03-08 22:34:12', 1, 29, 10, '1489008853.jpg', 'user1'),
+(16, 'Pidgey', 'Pidgey is a Normal/Flying type Pokemon introduced in Generation 1. It is known as the Tiny Bird Pokemon.', '2017-03-08 22:35:53', 5, 298, 14, '1489008953.jpg', 'user1'),
+(17, 'Pidgeotto', 'Pidgeotto is a Normal/Flying type Pokemon introduced in Generation 1. It is known as the Bird Pokemon.', '2017-03-08 22:36:35', 5, 192, 12, '1489008995.jpg', 'user1'),
+(18, 'Pidgeot', 'Pidgeot is a Normal/Flying type Pokemon introduced in Generation 1. It is known as the Bird Pokemon. Pidgeot has a Mega Evolution, available from Omega Ruby & Alpha Sapphire onwards.', '2017-03-08 22:37:21', 5, 298, 27, '1489009042.jpg', 'user1'),
+(19, 'Rattata', 'Rattata is a Normal type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon. Rattata has a new Alolan form introduced in Pokemon Sun/Moon.', '2017-03-08 22:38:02', 5, 91, 29, '1489009082.jpg', 'user1'),
+(20, 'Raticate', 'Raticate is a Normal type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon.', '2017-03-08 22:38:49', 5, 871, 29, '1489009129.jpg', 'user1'),
+(21, 'Spearow', 'Spearow is a Normal/Flying type Pokemon introduced in Generation 1. It is known as the Tiny Bird Pokemon.', '2017-03-08 22:39:20', 5, 221, 29, '1489009161.jpg', 'user1'),
+(22, 'Fearow', 'Fearow is a Normal/Flying type Pokemon introduced in Generation 1. It is known as the Beak Pokemon.', '2017-03-08 22:39:54', 5, 287, 121, '1489009195.jpg', 'user1'),
+(23, 'Pikachu', 'Pikachu is an Electric type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon.', '2017-03-08 22:41:12', 6, 245, 14, '1489009272.jpg', 'user1'),
+(24, 'Raichu', 'Raichu is an Electric type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon. Raichu has a new Alolan form introduced in Pokemon Sun/Moon.', '2017-03-08 22:41:44', 6, 1287, 10, '1489009304.jpg', 'user1'),
+(25, 'Sandshrew', 'Sandshrew is a Ground type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon. Sandshrew has a new Alolan form introduced in Pokemon Sun/Moon.', '2017-03-08 22:42:22', 6, 1099, 75, '1489009343.jpg', 'user1'),
+(26, 'Sandslash', 'Sandslash is a Ground type Pokemon introduced in Generation 1. It is known as the Mouse Pokemon. Sandslash has a new Alolan form introduced in Pokemon Sun/Moon.', '2017-03-08 22:42:49', 6, 198, 30, '1489009369.jpg', 'user1');
+
+CREATE TABLE IF NOT EXISTS `reports` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `created_at` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `revisions` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+INSERT INTO `revisions` (`id`, `type`, `type_id`, `date`, `user`) VALUES
+(1, 'products', 1, '2017-03-08 22:53:23', 'user1'),
+(2, 'products', 2, '2017-03-08 22:53:40', 'user1'),
+(3, 'products', 1, '2017-03-08 22:53:50', 'user1'),
+(4, 'products', 4, '2017-03-08 22:53:55', 'user1'),
+(5, 'products', 11, '2017-03-08 22:54:01', 'user1'),
+(6, 'categories', 1, '2017-03-08 22:54:14', 'user1'),
+(7, 'categories', 1, '2017-03-08 22:54:17', 'user1'),
+(8, 'categories', 3, '2017-03-08 22:54:20', 'user1'),
+(9, 'categories', 2, '2017-03-08 22:54:23', 'user1'),
+(10, 'categories', 4, '2017-03-08 22:54:25', 'user1'),
+(11, 'categories', 2, '2017-03-08 22:54:28', 'user1'),
+(12, 'products', 18, '2017-03-08 22:54:37', 'user1'),
+(13, 'products', 1, '2017-03-08 22:54:41', 'user1');
+
+
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` varchar(255) NOT NULL,
+  `admin` boolean NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `admin`) VALUES
+(1, 'root', '8eec77dc748b7d0702119badc92a0c7293be0749', 'root@root.com', '2017-03-08 22:07:32', 1),
+(2, 'user1', '78fd74089ed247b6ee26a13d51f2c2a09b5c659d', 'user1@example.com', '2017-03-08 23:07:32', 0);
+
+
+
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL,
+  `created_at` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `text` text NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO `comments` (`id`, `created_at`, `user`, `text`) VALUES
+(1, '2017-03-08 23:06:24', 'user1', 'talk to me plx'),
+(2, '2017-03-08 23:06:54', 'user1', 'not much life here'),
+(3, '2017-03-08 23:07:32', 'user1', 'anybody?'),
+(4, '2017-03-08 23:07:40', 'user1', 'i program PHP for money'),
+(5, '2017-03-08 23:08:02', 'user1', 'very structured guy'),
+(6, '2017-03-08 23:08:10', 'user1', 'i make inhackable webapps'),
+(7, '2017-03-08 23:07:15', 'user1', 'no one interested?');
+
+
+
+
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `revisions`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `revisions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;

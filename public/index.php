@@ -214,8 +214,8 @@ $router->get('/signin/', function() {
 
 $router->post('/signin/', function() {
     $controller = new \App\Controllers\SessionsController();
-    $controller->login();   //  login() i SessionsController, siden den ikke tar noen argumenter
-});     
+    $controller->login();
+});
 
 //start routes for registration
 $router->get('/registration/', function() {

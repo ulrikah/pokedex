@@ -73,7 +73,7 @@ class FormValidator {
         }
 
         else {
-            if(empty($value['type'])) { //  this should check if filetype is jpg etc. something like $value['type'] == "image/jpeg"
+            if(empty($value['type'])) {
                 $this->errors[$element] = $message;
                 return;
             }

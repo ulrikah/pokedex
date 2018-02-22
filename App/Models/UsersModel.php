@@ -13,7 +13,7 @@ class UsersModel extends Model {
         $userRow = $this->getUserRow($username);
         if($userRow) {
             if($userRow->password === $passwordHash) {
-                $_SESSION['auth'] = $userRow->id; // $_SESSION['auth'] takes the ID-value of the entry ?
+                $_SESSION['auth'] = $userRow->id;
                 return true;
             }
         }

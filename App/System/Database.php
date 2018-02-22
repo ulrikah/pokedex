@@ -19,7 +19,6 @@ class Database {
         $this->db_name     = $db_name;
     }
 
-    //  this one may print out some ugly error messages i guess ? 
     private function getPDO() {
         if($this->pdo === null) {
             $this->pdo = new PDO("mysql:dbname={$this->db_name};host={$this->db_host}", $this->db_user, $this->db_password);
@@ -30,23 +29,20 @@ class Database {
         return $this->pdo;
     }
 
-    // Executes an SQL statement, returning a result set as a PDOStatement object
-    //  ... might be an idea to check which queries that are prepared, and which that are not
     public function query($statement, $one = false) {
         $req  = $this->getPDO()->query($statement);
 
         if($one) {
-            $data = $req->fetch();  //  fetch the next row from req (result set)
+            $data = $req->fetch();
         }
 
         else {
-            $data = $req->fetchAll();   //  returns all result set rows from req
+            $data = $req->fetchAll();
         }
 
         return $data;
     }
 
-    //  Prepares a statement for execution and returns a statement object
     public function prepare($statement, $attributes, $one = false) {
         $req = $this->getPDO()->prepare($statement);
         //echo $statement; echo $attributes; die;
@@ -63,7 +59,6 @@ class Database {
         return $data;
     }
 
-    //  Executes a prepared statement
     public function execute($statement, $attributes = false) {
         if(!$attributes) {
             $this->getPDO()->query($statement);

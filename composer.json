@@ -1,0 +1,19 @@
+{
+    "name": "inventory-manager",
+    "authors": [
+        {
+            "name": "gregoiremielle",
+            "email": "gregoiremielle@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        }
+    },
+    "require": {
+        "twig/twig": "~2.0",
+        "symfony/yaml": "^3.2",
+        "phpmailer/phpmailer": "^5.2"
+    }
+}

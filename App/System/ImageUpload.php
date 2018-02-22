@@ -19,5 +19,3 @@ class ImageUpload {
     }
     
 }
-
-// Her kan man kanskje abuse det at man kan laste opp scripts? 
