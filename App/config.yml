@@ -7,10 +7,10 @@ dev:
     database:
         username: 'root'
         password: ''
-        name: 'inventory'
+        name: 'inventory10'
         host: 'localhost'
         type: 'mysql'
-    debug: true
+    debug: false
     twig:
         cache: false
     salt: 'test'
@@ -28,7 +28,7 @@ prod:
     database:
         username: 'root'
         password: ''
-        name: 'inventory'
+        name: 'inventory10'
         host: 'localhost'
         type: 'mysql'
     debug: false
