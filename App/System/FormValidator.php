@@ -9,6 +9,7 @@ class FormValidator {
 	private $errors = [];
 
 	// T0D0 - sanitize the whole form, especially string inputs and file upload
+
 	public function notEmpty($element, $value, $message) {
 		if (empty($value)) {
 			$this->errors[$element] = $message;
@@ -16,6 +17,14 @@ class FormValidator {
 		}
 		return true;
 	}
+
+    public function validLength($element, $value, $message){
+    int pwSize = 5;     
+        if (strlen($value) < pwSize) {
+            $this->errors[$element] = $message; 
+            return false; 
+        }
+    }
 
 	public function validCategory($element, $value, $message) {
 		$model = new CategoriesModel();
@@ -25,7 +34,7 @@ class FormValidator {
 		}
 	}
 
-	# Emil: For AUTH-007
+
 	public function validPassword($element, $value, $value_verification, $message) {
 		if (empty($value) || ($value != $value_verification)) {
 			$this->errors[$element] = $message;
