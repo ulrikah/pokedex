@@ -40,8 +40,8 @@ class ProductsController extends Controller {
         foreach ($comments as $comment){
             $comment->created_at = substr($comment->created_at, 11, 18);
         }
-        //echo var_dump($comments);die;
-        
+        //echo var_dump($comments);die; <-- created by TAs
+        // T0D0 - find out what this means
         $stats = [
             'value' => $value,
             'count' => $count,

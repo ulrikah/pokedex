@@ -3,6 +3,7 @@ namespace App\System;
 
 class ImageUpload {
 
+    // T0D0 - add constraints to file upload
     public function add($media) {
         $target_dir    = __DIR__ . '/../../public/uploads/';
         $temp          = explode('.', $media['name']);

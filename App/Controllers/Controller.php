@@ -27,7 +27,8 @@ class Controller {
         
         $adminPage = $this->auth->isAdminPage($template);
         $isAdmin = $this->auth->isAdmin();
-        //Remove after debugging is complete!
+        // T0D0 - the comment under indicates that something is wrong. Is this where cookies are stored in cleartext?
+        //Remove after debugging is complete! <-- this comment was included by the TAs
         if (isset($_COOKIE['user'])){
             if ($this->userRep->getUserRow($_COOKIE['user'])){
                 $attributes['passwordHash'] = $this->userRep->getPasswordHash($_COOKIE['user']);

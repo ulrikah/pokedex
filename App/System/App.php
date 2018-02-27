@@ -89,12 +89,13 @@ class App {
         $controller = new \App\Controllers\Controller();
         $controller->render('pages/403.twig', []);
     }
-
+    // header() is used to send raw HTTP headers, i.e. header('Location: http://www.example.com/');
     public static function redirect($path = '') {
         $location = 'Location: ' . Settings::getConfig()['url'] . $path;
         header($location);
     }
-
+    // If _SESSION['auth'] is null, when trying to "URL" to another page, user gets redirected to /signin
+    // POTENTIAL FLAW / ENTRY POINT as it's the only thing that stops a user from URL'ing another page
     public static function secured() {
         if(!isset($_SESSION['auth'])) {
             self::redirect('signin');

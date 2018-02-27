@@ -8,6 +8,7 @@ class FormValidator {
 
     private $errors = [];
 
+    // T0D0 - sanitize the whole form, especially string inputs and file upload
     public function notEmpty($element, $value, $message) {
         if(empty($value)) {
             $this->errors[$element] = $message;
