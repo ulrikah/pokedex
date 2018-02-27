@@ -45,6 +45,7 @@ $router->get('/products/', function() {
     $controller->all();
 });
 
+// SQL-injectable route
 $router->get('/products/view/:id/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ProductsController();
@@ -63,24 +64,28 @@ $router->post('/products/add/', function() {
     $controller->add();
 });
 
+// Fiks: OTG-AUTHN-007
 $router->get('/products/:id/edit/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ProductsController();
     $controller->edit($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->post('/products/:id/edit/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ProductsController();
     $controller->edit($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->get('/products/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ProductsController();
     $controller->delete($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->post('/products/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ProductsController();
@@ -104,25 +109,28 @@ $router->post('/categories/add/', function() {
     $controller = new \App\Controllers\CategoriesController();
     $controller->add();
 });
-
+// Fiks: OTG-AUTHN-007
 $router->get('/categories/:id/edit/', function($id) {
     App::secured();
     $controller = new \App\Controllers\CategoriesController();
     $controller->edit($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->post('/categories/:id/edit/', function($id) {
     App::secured();
     $controller = new \App\Controllers\CategoriesController();
     $controller->edit($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->get('/categories/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\CategoriesController();
     $controller->delete($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->post('/categories/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\CategoriesController();
@@ -195,12 +203,14 @@ $router->post('/reports/add/', function() {
     $controller->add();
 });
 
+// Fiks: OTG-AUTHN-007
 $router->get('/reports/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ReportsController();
     $controller->delete($id);
 })->with('id', '[0-9]+');
 
+// Fiks: OTG-AUTHN-007
 $router->post('/reports/:id/delete/', function($id) {
     App::secured();
     $controller = new \App\Controllers\ReportsController();

@@ -19,10 +19,9 @@ class FormValidator {
 	}
 
     public function validLength($element, $value, $message){
-    int pwSize = 5;     
-        if (strlen($value) < pwSize) {
-            $this->errors[$element] = $message; 
-            return false; 
+    	$pwSize = 5;     
+        if (strlen($value) < $pwSize) {
+            $this->errors[$element] = $message;
         }
     }
 

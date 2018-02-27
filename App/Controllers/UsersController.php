@@ -76,7 +76,7 @@ class UsersController extends Controller {
 		$validator->availableUsername('username', $username, "Your username is not available");
 
 		if ($validator->notEmpty('password', $password, "Your password can't be empty")) {
-			$validator->validLength('password', $password, "Your passowrd is to short, use at least five characters");
+			$validator->validLength('password', $password, "Your password is too short, use at least five characters");
 			$validator->validPassword('password2', $password, $password_verification, "You didn't write the same password twice");
 
 		}
