@@ -18,12 +18,18 @@ class FormValidator {
 		return true;
 	}
 
-    public function validLength($element, $value, $message){
-    	$pwSize = 5;     
-        if (strlen($value) < $pwSize) {
-            $this->errors[$element] = $message;
-        }
-    }
+	public function validLength($element, $value, $message) {
+		$pwSize = 5;
+		if (strlen($value) < $pwSize) {
+			$this->errors[$element] = $message;
+		}
+	}
+
+	public function validSymbols($element, $value, $message) {
+		if (!preg_match('/[a-zA-Z0-9]+/', $value)) {
+			$this->errors[$element] = $message;
+		}
+	}
 
 	public function validCategory($element, $value, $message) {
 		$model = new CategoriesModel();
@@ -32,7 +38,6 @@ class FormValidator {
 			$this->errors[$element] = $message;
 		}
 	}
-
 
 	public function validPassword($element, $value, $value_verification, $message) {
 		if (empty($value) || ($value != $value_verification)) {

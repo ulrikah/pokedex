@@ -77,6 +77,7 @@ class UsersController extends Controller {
 
 		if ($validator->notEmpty('password', $password, "Your password can't be empty")) {
 			$validator->validLength('password', $password, "Your password is too short, use at least five characters");
+			$validator->validSymbols('password', $password, "Please have different characters");
 			$validator->validPassword('password2', $password, $password_verification, "You didn't write the same password twice");
 
 		}
