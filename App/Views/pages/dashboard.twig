@@ -1,6 +1,22 @@
 {% extends 'layouts/default.twig' %}
 
 {% block content %}
+
+<!--
+    // Problem: Works externally, but also internally
+    <script language="JavaScript">
+      let needToConfirm = true;
+      let root = new RegExp(location.host);
+      if (root)
+      window.onbeforeunload = confirmExit;
+      function confirmExit()
+      {
+        if (needToConfirm)
+          return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost. Are you sure you want to exit this page?";
+      }
+
+-->
+    </script>
     <div class="important-facts">
         <div class="col-md-3">
             <div class="card">
@@ -154,10 +170,11 @@
 {% block breadcrumb %}
     <a href="{{ url('dashboard') }}" title="Dashboard">Dashboard</a>
 {% endblock %}
-
 {% block extra_scripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/moment_dates.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard.min.js') }}"></script>
+};
 {% endblock %}
