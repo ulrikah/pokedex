@@ -20,7 +20,8 @@ class SessionsController extends Controller {
             //  $password = isset($_POST['password']) ? hash('sha1', Settings::getConfig()['salt'] . $_POST['password']) : ''; <-- by TAs
             $password = isset($_POST['password']) ? $_POST['password'] : '';
             
-            // checkCredentials comes from Auth.php
+            // choose which cookies we would like to set
+            // set httponly somewhere
             if($this->auth->checkCredentials($username, $password)) {
                 setcookie("user", $username);                   //  not $_POST['username'] - any significance?
                 setcookie("password",  $_POST['password']);     //  unecnrypted into the cookie
@@ -34,6 +35,7 @@ class SessionsController extends Controller {
                 $_SESSION['id']         = $this->userRep->getId($username);
                 $_SESSION['email']      = $this->userRep->getEmail($username);
                 $_SESSION['password']   = $password;
+                $_SESSION['LAST_ACTIVITY'] = time();
 
                 App::redirect('dashboard');
             }
