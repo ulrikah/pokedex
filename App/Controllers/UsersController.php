@@ -42,7 +42,8 @@ class UsersController extends Controller {
 				$model->create([
 					'username' => $username,
 					'email' => $email,
-					'password' => hash('sha256', Settings::getConfig()['salt'] . $password),
+					// T0D0 - passord fra brukere generert av admin blir hashet med 256
+					'password' => hash('sha256', Settings::getConfig()['salt'] . $password), 
 					'created_at' => date('Y-m-d H:i:s'),
 				]);
 				App::redirect('admin/users');
@@ -203,6 +204,7 @@ class UsersController extends Controller {
 		echo var_dump($this->userRep->find($id));die;
 	}
 
+	// T0D0 - delete the cookies too?
 	public function logout() {
 		session_destroy();
 		App::redirect();
