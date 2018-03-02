@@ -6,21 +6,27 @@ use \App\System\Settings;
 use \App\System\FormValidator;
 use \App\Controllers\Controller;
 use \App\Models\UsersModel;
+use \App\Models\IPModel;
 use \App\System\Auth;
+
+
 
 class SessionsController extends Controller {
 
     public function login() {
         if(!empty($_POST)) {
-            
+
+            // check for login attemps
+            $ipModel = new IPModel();
+            $ip = $_SERVER['REMOTE_ADDR'];  // ::1 is the default IP for localhost
+            $ipModel->loginAttempt($ip);
 
             //  T0D0 - password is non-hashed in the POST-request. therefore we are able to sniff it in Wireshark etc.? 
-            //  MAJOR FLAW
             $username = isset($_POST['username']) ? $_POST['username'] : '';
             //  $password = isset($_POST['password']) ? hash('sha1', Settings::getConfig()['salt'] . $_POST['password']) : ''; <-- by TAs
             $password = isset($_POST['password']) ? $_POST['password'] : '';
             
-            // choose which cookies we would like to set
+            // T0D0 choose which cookies we would like to set
             // set httponly somewhere
             if($this->auth->checkCredentials($username, $password)) {
                 setcookie("user", $username);                   //  not $_POST['username'] - any significance?
@@ -42,9 +48,7 @@ class SessionsController extends Controller {
 
             else {
                 //  This error msg gets printed if checkCredidentials fails
-                $errors = [
-                    "Your username and your password don't match."
-                ];
+                //$errors = ["Your username and your password don't match." ];
             }
         }
 

@@ -127,7 +127,10 @@ INSERT INTO `comments` (`id`, `created_at`, `user`, `text`) VALUES
 (6, '2017-03-08 23:08:10', 'user1', 'i make inhackable webapps'),
 (7, '2017-03-08 23:07:15', 'user1', 'no one interested?');
 
-
+CREATE TABLE IF NOT EXISTS `ip` (
+  `address` char(16) COLLATE utf8_bin NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 ALTER TABLE `categories`
