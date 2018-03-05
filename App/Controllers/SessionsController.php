@@ -18,8 +18,18 @@ class SessionsController extends Controller {
 
             // check for login attemps
             $ipModel = new IPModel();
-            $ip = $_SERVER['REMOTE_ADDR'];  // ::1 is the default IP for localhost
-            $ipModel->loginAttempt($ip);
+            $isAllowedToLogin = $ipModel->loginAttempt();            
+
+            // Can perhaps be written better
+            if (!$isAllowedToLogin){
+                $errors = ["You have attempted too many logins. Please wait and try again later."];
+                $this->render('pages/signin.twig', [
+                    'title'       => 'Sign in',
+                    'description' => 'Sign in to the dashboard',
+                    'errors'      => isset($errors) ? $errors : ''
+                ]);
+                exit;
+            }
 
             //  T0D0 - password is non-hashed in the POST-request. therefore we are able to sniff it in Wireshark etc.? 
             $username = isset($_POST['username']) ? $_POST['username'] : '';
@@ -47,8 +57,8 @@ class SessionsController extends Controller {
             }
 
             else {
-                //  This error msg gets printed if checkCredidentials fails
-                //$errors = ["Your username and your password don't match." ];
+                $errors = ["Your username and your password don't match." ];
+
             }
         }
 
