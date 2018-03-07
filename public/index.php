@@ -7,6 +7,11 @@ use \App\System\Settings;
 use \App\Models\UsersModel;
 
 session_start();
+$params = session_get_cookie_params();
+setcookie("PHPSESSID", session_id(), 0, $params["path"], $params["domain"],
+    false,  // this is the secure flag you need to set. Default is false.
+    true  // this is the httpOnly flag you need to set
+);
 
 $app    = new App();
 $router = new Router($_GET);
