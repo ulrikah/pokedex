@@ -11,6 +11,7 @@ class Model {
     
     
     public function __construct(){
+        // T0D0 - cookie is not meant to be stored in the username
         if (isset ($_COOKIE['user'])){ $this->username = $_COOKIE['user'];}
     }
 

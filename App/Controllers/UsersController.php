@@ -204,9 +204,11 @@ class UsersController extends Controller {
 		echo var_dump($this->userRep->find($id));die;
 	}
 
-	// T0D0 - delete the cookies too?
+	// T0D0 - delete the cookies too
 	public function logout() {
 		session_destroy();
+		// remove cookies
+		// setcookie('PHPSESSID', '', time()-3600, '/', '', 0, 0) fra stackoverflow
 		App::redirect();
 	}
 

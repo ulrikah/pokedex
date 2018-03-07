@@ -35,9 +35,11 @@ class Auth{
     
     public function isAdmin(){
         if ($this->isLoggedIn()){
-            if ($_COOKIE['admin'] === 'yes'){
-                return true;
-            }else{
+            // T0D0 - does not seem to work
+            if ($this->userRep->getAdmin($username)){ // evt if ($_SESSION['admin']
+                    return true;
+            }
+            else{
                 return false;
             }
         }

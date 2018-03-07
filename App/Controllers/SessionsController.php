@@ -40,12 +40,7 @@ class SessionsController extends Controller {
             // set httponly somewhere
             if($this->auth->checkCredentials($username, $password)) {
                 setcookie("user", $username);                   //  not $_POST['username'] - any significance?
-                setcookie("password",  $_POST['password']);     //  unecnrypted into the cookie
-                if ($this->userRep->getAdmin($username)){       //  getAdmin(username) does a lookup in th db => admin users are pre-defined
-                    setcookie("admin", 'yes');
-                }else{
-                    setcookie("admin", 'no');
-                }
+                
                 //  session_start() is triggered in index.php
                 $_SESSION['auth']       = $username;
                 $_SESSION['id']         = $this->userRep->getId($username);
