@@ -35,8 +35,7 @@ class Auth{
     
     public function isAdmin(){
         if ($this->isLoggedIn()){
-            // T0D0 - does not seem to work
-            if ($this->userRep->getAdmin($username)){ // evt if ($_SESSION['admin']
+            if ($_SESSION['admin']){
                     return true;
             }
             else{
