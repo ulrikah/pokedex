@@ -42,8 +42,7 @@ class UsersController extends Controller {
 				$model->create([
 					'username' => $username,
 					'email' => $email,
-					// T0D0 - passord fra brukere generert av admin blir hashet med 256
-					'password' => hash('sha256', Settings::getConfig()['salt'] . $password), 
+					'password' => hash('sha512', Settings::getConfig()['salt'] . $password), 
 					'created_at' => date('Y-m-d H:i:s'),
 				]);
 				App::redirect('admin/users');
@@ -95,7 +94,7 @@ class UsersController extends Controller {
 
 		$model->create([
 			'username' => $username,
-			'password' => hash('sha1', Settings::getConfig()['salt'] . $password),
+			'password' => hash('sha512', Settings::getConfig()['salt'] . $password),
 			'created_at' => date('Y-m-d H:i:s'),
 			'admin' => 0,
 		]);

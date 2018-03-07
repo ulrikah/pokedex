@@ -13,7 +13,7 @@ dev:
     debug: false
     twig:
         cache: false
-    salt: 'test'
+    salt: 'aeou'
     mail:
         from: 'root@root.com'
         host: 'localhost'
@@ -34,7 +34,7 @@ prod:
     debug: false
     twig:
         cache: false
-    salt: 'test'
+    salt: 'aeou'
     mail:
         from: 'root@root.com'
         host: 'localhost'

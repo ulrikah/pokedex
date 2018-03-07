@@ -20,7 +20,7 @@ class SessionsController extends Controller {
             $ipModel = new IPModel();
             $isAllowedToLogin = $ipModel->loginAttempt();            
 
-            // Can perhaps be written better
+            // T0D0 - too strict check. May be a solution split up the code in loginAttempt
             if (!$isAllowedToLogin){
                 $errors = ["You have attempted too many logins. Please wait and try again later."];
                 $this->render('pages/signin.twig', [
@@ -36,7 +36,7 @@ class SessionsController extends Controller {
             //  $password = isset($_POST['password']) ? hash('sha1', Settings::getConfig()['salt'] . $_POST['password']) : ''; <-- by TAs
             $password = isset($_POST['password']) ? $_POST['password'] : '';
             
-            // T0D0 choose which cookies we would like to set
+            // T0D0 find a way to remove the user-cookie safely and what to do with PHPSESSID
             // set httponly somewhere
             if($this->auth->checkCredentials($username, $password)) {
                 setcookie("user", $username);                   //  not $_POST['username'] - any significance?

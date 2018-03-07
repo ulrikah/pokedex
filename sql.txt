@@ -103,10 +103,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `admin` boolean NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
+# Added new default users with freshly hashed passwords
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `admin`) VALUES
-(1, 'root', '8eec77dc748b7d0702119badc92a0c7293be0749', 'root@root.com', '2017-03-08 22:07:32', 1),
-(2, 'user1', '78fd74089ed247b6ee26a13d51f2c2a09b5c659d', 'user1@example.com', '2017-03-08 23:07:32', 0);
+(1, 'root', '78db35c41e3974c21ea0c31e85b969c7666f57cb1188de03b41687f82b6dfcfb90ccc611b47b2a8cc1de56a34bc1fc9089e94ed79e431bb46863ff1202dbf8f8', 'root@root.com', '2017-03-08 22:07:32', 1),
+(2, 'user1', 'cdfb5cd8d9f66335f118ab87fe44b912b9ee2fb0797571edf664d47f9296fa7b193286b6b095f9c5c07eaba9ce010b399c9d7652d78a8e518549c5af15f94f13', 'user1@example.com', '2017-03-08 23:07:32', 0);
 
 
 
