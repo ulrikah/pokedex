@@ -10,6 +10,16 @@ class ImageUpload {
         $file          = $media['name'];
         $target_file   = $target_dir . $file;
 
+
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        if  ($imageFileType != "jpg" 
+            && $imageFileType != "png" 
+            && $imageFileType != "jpeg") {
+            
+            throw new \Error("File couldn't be uploaded.");
+        }
+
+
         if(move_uploaded_file($media["tmp_name"], $target_file)) {
             return $file;
         }
@@ -18,5 +28,4 @@ class ImageUpload {
             throw new \Error("File couldn't be uploaded.");
         }
     }
-    
 }
