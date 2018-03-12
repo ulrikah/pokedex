@@ -16,7 +16,8 @@
       }
 
 -->
-    </script>
+
+
     <div class="important-facts">
         <div class="col-md-3">
             <div class="card">
@@ -127,7 +128,7 @@
         <div class="col-md-12">
         	<div class="card">
         	<h3>Shoutbox for all users</h3>
-        	
+
         		<div class="comment-form">
 					<form action="/comment/add" method="post" class="form">
         			   <div class="form-control">
@@ -145,7 +146,7 @@
                         {% for comment in comments %}
                             <div class="comment-element">
                                 <div class="comment">
-                                
+                     
                                     <div class="comment-created_at-user">
                                         <span>{{ comment.created_at }}	&nbsp;	&nbsp;{{ comment.user }}</span>
                                     </div>
@@ -176,5 +177,10 @@
     <script src="{{ asset('js/moment_dates.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.min.js') }}"></script>
+    <script>
+    function confirm_alert(node){
+        return confirm("Please confirm your exit.");
+    }
+    </script>
 };
 {% endblock %}

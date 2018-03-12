@@ -30,7 +30,7 @@ class CommentsModel extends Model {
 
 
 	// Made by breakermind and jasny :: jasny/linkify.php
-    public function linkify($value, $protocols = array('http', 'mail'), array $attributes = array(), $mode = 'normal')
+    function linkify($value, $protocols = array('http', 'mail'), array $attributes = array(), $mode = 'normal')
     {
         // Link attributes
         $attr = '';
@@ -47,10 +47,10 @@ class CommentsModel extends Model {
         foreach ((array)$protocols as $protocol) {
             switch ($protocol) {
                 case 'http':
-                case 'https':   $value = preg_replace_callback($mode != 'all' ? '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i' : '~([^\s<]+\.[^\s<]+)(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) { if ($match[1]) $protocol = $match[1]; $link = $match[2] ?: $match[3]; return '<' . array_push($links, '<a' . $attr . ' href="' . $protocol . '://' . $link  . '">' . $link . '</a>') . '>'; }, $value); break;
+                case 'https':   $value = preg_replace_callback($mode != 'all' ? '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i' : '~([^\s<]+\.[^\s<]+)(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) { if ($match[1]) $protocol = $match[1]; $link = $match[2] ?: $match[3]; return '<' . array_push($links, '<a' . $attr . ' href="' . $protocol . '://' . $link  . '" onclick="return confirm_alert(this);">' . $link . '</a>') . '>'; }, $value); break;
                 case 'mail':    $value = preg_replace_callback('~([^\s<]+?@[^\s<]+?\.[^\s<]+)(?<![\.,:])~', function ($match) use (&$links, $attr) { return '<' . array_push($links, '<a' . $attr . ' href="mailto:' . $match[1]  . '">' . $match[1] . '</a>') . '>'; }, $value); break;
                 case 'twitter': $value = preg_replace_callback('~(?<!\w)[@#](\w++)~', function ($match) use (&$links, $attr) { return '<' . array_push($links, '<a' . $attr . ' href="https://twitter.com/' . ($match[0][0] == '@' ? '' : 'search/%23') . $match[1]  . '">' . $match[0] . '</a>') . '>'; }, $value); break;
-                default:        $value = preg_replace_callback($mode != 'all' ? '~' . preg_quote($protocol, '~') . '://([^\s<]+?)(?<![\.,:])~i' : '~([^\s<]+)(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) { return '<' . array_push($links, '<a' . $attr . ' href="' . $protocol . '://' . $match[1]  . '">' . $match[1] . '</a>') . '>'; }, $value); break;
+                default:        $value = preg_replace_callback($mode != 'all' ? '~' . preg_quote($protocol, '~') . '://([^\s<]+?)(?<![\.,:])~i' : '~([^\s<]+)(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) { return '<' . array_push($links, '<a' . $attr . ' href="' . $protocol . '://' . $match[1]  . '" onclick=alert("Hei");>' . $match[1] .  '</a>') . '>'; }, $value); break;
             }
         }
         
