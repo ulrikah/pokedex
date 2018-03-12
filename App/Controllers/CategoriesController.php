@@ -27,7 +27,9 @@ class CategoriesController extends Controller {
     public function add() {
         if(!empty($_POST)) {
             $title       = isset($_POST['title']) ? $_POST['title'] : '';
+            $title = strip_tags($title);
             $description = isset($_POST['description']) ? $_POST['description'] : '';
+            $description = strip_tags($description);
 
             $validator = new FormValidator();
             $validator->notEmpty('title', $title, "Your title must not be empty");
@@ -71,7 +73,9 @@ class CategoriesController extends Controller {
     public function edit($id) {
         if(!empty($_POST)) {
             $title       = isset($_POST['title']) ? $_POST['title'] : '';
+            $title = strip_tags($title);
             $description = isset($_POST['description']) ? $_POST['description'] : '';
+            $description = strip_tags($description);
 
             $validator = new FormValidator();
             $validator->notEmpty('title', $title, "Your title must not be empty");
