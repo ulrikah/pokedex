@@ -7,7 +7,7 @@ dev:
     database:
         username: 'root'
         password: ''
-        name: 'inventory10'
+        name: 'inventory'
         host: 'localhost'
         type: 'mysql'
     debug: false
@@ -28,7 +28,7 @@ prod:
     database:
         username: 'root'
         password: ''
-        name: 'inventory10'
+        name: 'inventory'
         host: 'localhost'
         type: 'mysql'
     debug: false
